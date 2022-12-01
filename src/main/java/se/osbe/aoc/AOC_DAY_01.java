@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static se.osbe.aoc.helper.SantasLittleHelper.loadInputFile;
+import static se.osbe.aoc.helper.SantasLittleHelper.loadInputFileToMap;
 import static se.osbe.aoc.helper.SantasLittleHelper.printResult;
 
 public class AOC_DAY_01 {
@@ -16,14 +16,14 @@ public class AOC_DAY_01 {
     private List<Integer> _result;
 
     public AOC_DAY_01() throws Exception {
-        _inputMap = loadInputFile(INPUTFILE1);
+        _inputMap = loadInputFileToMap(INPUTFILE1);
         _result = new ArrayList<>();
         resolveTask1();
         resolveTask2();
     }
 
     private void resolveTask1() throws Exception {
-        Map<Integer, List<Integer>> inputMap = loadInputFile(INPUTFILE1);
+        Map<Integer, List<Integer>> inputMap = loadInputFileToMap(INPUTFILE1);
         IntStream.range(0, inputMap.entrySet().size()).forEach(idx -> {
             _result.add(
                     _inputMap.get(idx).stream().collect(Collectors.summingInt(Integer::intValue))
