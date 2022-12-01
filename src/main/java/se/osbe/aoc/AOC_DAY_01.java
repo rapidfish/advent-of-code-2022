@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 import static se.osbe.aoc.helper.SantasLittleHelper.loadInputFileToMap;
 import static se.osbe.aoc.helper.SantasLittleHelper.printResult;
 
-public class AOC_DAY_01 {
+public class AOC_DAY_01 implements IResolveTasks {
 
     private static String INPUTFILE1 = "input_d01_t01.txt";
 
@@ -21,7 +21,7 @@ public class AOC_DAY_01 {
         resolveTask2();
     }
 
-    private void resolveTask1() throws Exception {
+    public void resolveTask1() throws Exception {
         Map<Integer, List<Integer>> inputMap = loadInputFileToMap(INPUTFILE1);
         IntStream.range(0, inputMap.entrySet().size()).forEach(idx -> {
             _result.add(
@@ -35,7 +35,7 @@ public class AOC_DAY_01 {
         printResult("01", "1", _result.get(indxToMaxValue)); // correct answer is 69206
     }
 
-    private void resolveTask2() throws Exception {
+    public void resolveTask2() throws Exception {
         Collections.sort(_result, Comparator.reverseOrder());
         int sum = IntStream.rangeClosed(0, 2)
                 .map(idx -> _result.get(idx))

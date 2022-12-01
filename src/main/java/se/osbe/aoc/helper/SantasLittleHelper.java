@@ -9,6 +9,9 @@ import java.util.Map;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * Santas little helper - a helper class!
+ */
 public class SantasLittleHelper {
 
     private static String EMPTY_ROW = "";
@@ -40,6 +43,6 @@ public class SantasLittleHelper {
     }
 
     public static void printResult(String dayNo, String taskNo, String result) {
-        System.out.println(String.format("AOC2022 - DAY-%s - TASK-%s: %s", dayNo, taskNo, result));
+        System.out.println(String.format("AoC2022 - DAY-%s - TASK-%s: %s", dayNo, taskNo, result));
     }
 }
