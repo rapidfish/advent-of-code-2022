@@ -13,7 +13,7 @@ public class SantasLittleHelper {
 
     private static String EMPTY_ROW = "";
 
-    public static Map<Integer, List<Integer>> loadInputFile(String fileName) throws Exception {
+    public static Map<Integer, List<Integer>> loadInputFileToMap(String fileName) throws Exception {
         Integer index = 0;
         Map<Integer, List<Integer>> result = new HashMap<>();
         BufferedReader reader = new BufferedReader(
@@ -21,7 +21,7 @@ public class SantasLittleHelper {
                         requireNonNull(SantasLittleHelper.class.getClassLoader().getResourceAsStream(fileName))
                 )
         );
-        String line = "";
+        String line;
         while ((line = reader.readLine()) != null) {
             if (EMPTY_ROW.equals(line)) {
                 index++;
@@ -30,18 +30,7 @@ public class SantasLittleHelper {
             if (!result.containsKey(index)) {
                 result.put(index, new ArrayList<>());
             }
-            result.get(index).add(castToInteger(line));
-        }
-        return result;
-    }
-
-    public static Integer castToInteger(String str) {
-        Integer result = null;
-        try {
-            result = Integer.valueOf(str);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            System.exit(1); // Error, NaN !!!
+            result.get(index).add(Integer.valueOf(line));
         }
         return result;
     }
