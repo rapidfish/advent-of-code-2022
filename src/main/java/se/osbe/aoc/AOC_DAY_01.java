@@ -10,7 +10,6 @@ import static se.osbe.aoc.helper.SantasLittleHelper.printResult;
 public class AOC_DAY_01 {
 
     private static String INPUTFILE1 = "input_d01_t01.txt";
-    private static String INPUTFILE2 = "input_d01_t02.txt";
 
     private Map<Integer, List<Integer>> _inputMap;
     private List<Integer> _result;
