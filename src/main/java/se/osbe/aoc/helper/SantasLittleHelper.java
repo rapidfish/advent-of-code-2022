@@ -1,4 +1,4 @@
-package helper;
+package se.osbe.aoc.helper;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

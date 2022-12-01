@@ -1,9 +1,11 @@
+package se.osbe.aoc;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static helper.SantasLittleHelper.loadInputFile;
-import static helper.SantasLittleHelper.printResult;
+import static se.osbe.aoc.helper.SantasLittleHelper.loadInputFile;
+import static se.osbe.aoc.helper.SantasLittleHelper.printResult;
 
 public class AOC_DAY_01 {
 
