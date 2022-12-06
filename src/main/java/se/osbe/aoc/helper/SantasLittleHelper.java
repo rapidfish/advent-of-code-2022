@@ -1,5 +1,7 @@
 package se.osbe.aoc.helper;
 
+import se.osbe.aoc.RPC;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
@@ -65,17 +67,29 @@ public class SantasLittleHelper {
         System.out.println(String.format("AoC2022 - DAY-%s - TASK-%s: %s", dayNo, taskNo, result));
     }
 
-    public static int rockPaperScissors(String rawHands) {
+    public static RPC convertRawHandToRPC(String rawHands){
         String hands = Objects.requireNonNull(rawHands);
         if (!ROCK_PAPER_SCISSORS_PATTERN.matcher(rawHands).find()) {
             throw new RuntimeException("Wrong pattern for row with 'Rock Paper Scissor' hand: " + rawHands);
         }
-        char opponent = hands.charAt(0);
-        char player = hands.charAt(2);
-        return resolveScoreForPlayer(winner(opponent, player), player);
+        return new RPC(hands.charAt(0), hands.charAt(2));
     }
 
-    private static int winner(char opponent, char player) {
+    /**
+     * Determine winning hand, opponent wins (-1), player wins (1), or if its a draw (0)
+     * @param rpc a Rock Paper Scissors object
+     * @return greater than zero player wins, less than zero opponent wins, zero its a draw!
+     */
+    public static int compareHands(RPC rpc) {
+        return compareHands(rpc.getOpponentHand(), rpc.getPlayerHand());
+    }
+
+    /**
+     * @param opponent opponent hand ('A' for Rock, 'B' for Paper, and 'C' for Scissors)
+     * @param player player hand ('X' for Rock, 'Y' for Paper, and 'Z' for Scissors)
+     * @return greater than zero player wins, less than zero opponent wins, zero its a draw!
+     */
+    private static int compareHands(char opponent, char player) {
         // 'A' for Rock, 'B' for Paper, and 'C' for Scissors
         // 'X' for Rock, 'Y' for Paper, and 'Z' for Scissors
         switch (opponent) {
@@ -108,19 +122,12 @@ public class SantasLittleHelper {
                     case 'Z':
                         return 0;
                 }
-                break;
         }
         throw new RuntimeException("Invalid input for winner( leftPlayer, rightPlayer ) : " + opponent + ", " + player);
     }
 
-    private static int resolveScoreForPlayer(int winnerResult, char player) {
-        int result = winnerResult == 0 ? 3 : (winnerResult > 0 ? 6 : 0);
-        result += (player == 'X' ? 1 : (player == 'Y' ? 2 : 3)); // add score for using rock=1, paper=2, scissors=3
-        return result;
-    }
-
     public List<String> splitSpace(String str) {
-        final String space = " ";
-        return Arrays.asList(str.split(space));
+        final String SPACE = " ";
+        return Arrays.asList(str.split(SPACE));
     }
 }
