@@ -11,10 +11,10 @@ public class AOC_DAY_02 implements IResolveTasks {
 
     private static final String INPUTFILE1 = "input_d02_t01.txt";
 
-    private Map<Integer, List<Integer>> _inputMap;
-    private List<Integer> _result;
+    private List<String> _inputList;
 
     public AOC_DAY_02() throws Exception {
+        _inputList = loadFileToListOfStrings(INPUTFILE1);
         resolveTask1();
         resolveTask2();
     }
@@ -25,8 +25,8 @@ public class AOC_DAY_02 implements IResolveTasks {
 
     @Override
     public void resolveTask1() throws Exception {
-        List<String> inputList = loadFileToListOfStrings(INPUTFILE1);
-        int result = inputList.stream()
+
+        int result = _inputList.stream()
                 .map(SantasLittleHelper::convertRawHandToRPC)
                 .mapToInt(AOC_DAY_02::calculateScoreWinLose)
                 .sum();
@@ -35,8 +35,7 @@ public class AOC_DAY_02 implements IResolveTasks {
 
     @Override
     public void resolveTask2() throws Exception {
-        List<String> inputList = loadFileToListOfStrings(INPUTFILE1);
-        int result = inputList.stream()
+        int result = _inputList.stream()
                 .map(SantasLittleHelper::convertRawHandToRPC)
                 .map(AOC_DAY_02::resolveStrategyGuide)
                 .mapToInt(AOC_DAY_02::calculateScoreWinLose)
