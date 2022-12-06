@@ -10,14 +10,11 @@ import static se.osbe.aoc.helper.SantasLittleHelper.*;
 public class AOC_DAY_02 implements IResolveTasks {
 
     private static final String INPUTFILE1 = "input_d02_t01.txt";
-    // private static String INPUTFILE2 = "input_d02_t02.txt";
 
     private Map<Integer, List<Integer>> _inputMap;
     private List<Integer> _result;
 
     public AOC_DAY_02() throws Exception {
-        // _inputMap = loadInputFileToMap(INPUTFILE1);
-        // _result = new ArrayList<>();
         resolveTask1();
         resolveTask2();
     }
