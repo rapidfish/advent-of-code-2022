@@ -44,7 +44,7 @@ public class AOC_DAY_02 implements IResolveTasks {
                 .map(AOC_DAY_02::resolveStrategyGuide)
                 .mapToInt(AOC_DAY_02::calculateScoreWinLose)
                 .sum();
-        printResult("02", "2", "" + result); // Correct result is nnn
+        printResult("02", "2", "" + result); // Correct result is 10274
     }
 
     private static RPC resolveStrategyGuide(RPC hand) {
