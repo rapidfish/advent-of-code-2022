@@ -13,8 +13,19 @@ public class Rucksack {
         requireNonNull(str);
         int offset = str.length() / 2;
         // Analyze
-        leftCompartment = str.substring(0, offset).toCharArray();
-        rightCompartment = str.substring(offset).toCharArray();
+        leftCompartment = str.substring(0, offset).toCharArray(); // left compartment
+        rightCompartment = str.substring(offset).toCharArray(); // right compartment
+    }
+
+    public String getLeftCompartment() { return new String(leftCompartment); }
+
+    public String getRightCompartment() {
+        return new String(rightCompartment);
+    }
+
+    @Override
+    public String toString() {
+        return getLeftCompartment() + getRightCompartment();
     }
 
 //    public String getLeftCompartmentSorted() {
@@ -28,17 +39,4 @@ public class Rucksack {
 //        Arrays.sort(temp);
 //        return new String(temp);
 //    }
-
-    public String getLeftCompartment() {
-        return new String(leftCompartment);
-    }
-
-    public String getRightCompartment() {
-        return new String(rightCompartment);
-    }
-
-    @Override
-    public String toString() {
-        return getLeftCompartment() + getRightCompartment();
-    }
 }

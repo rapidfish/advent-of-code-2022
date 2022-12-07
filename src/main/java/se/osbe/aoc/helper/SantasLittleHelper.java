@@ -6,7 +6,6 @@ import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import static java.util.Objects.requireNonNull;
 
@@ -135,11 +134,11 @@ public class SantasLittleHelper {
          */
         // 65=A
         // 97=a
-        if(c >= 65 && c < (65+26)) {
+        if (c >= 65 && c < (65 + 26)) {
             // A-Z
             return (c - 65) + 27;
         }
-        if(c > (65+25)) {
+        if (c > (65 + 25)) {
             // a-z
             return (c - 97) + 1;
         }
@@ -150,13 +149,33 @@ public class SantasLittleHelper {
     public static Character resolveDuplicateItem(Rucksack rucksack) {
         char[] left = rucksack.getLeftCompartment().toCharArray();
         List<Character> rightCompartmentList = rucksack.getRightCompartment().chars().mapToObj(c -> (char) c).collect(Collectors.toList());
-       OptionalInt optInt = IntStream.range(0, left.length).map(i -> {
-            if(rightCompartmentList.contains(left[i])) {
+        OptionalInt optInt = IntStream.range(0, left.length).map(i -> {
+            if (rightCompartmentList.contains(left[i])) {
                 return i;
             } else {
                 return -1;
             }
         }).filter(i -> i != -1).findFirst();
         return new Character(left[optInt.orElseThrow(RuntimeException::new)]);
+    }
+
+    public static Character resolveGroupBadge(RucksackGroup rucksackGroup) {
+        char result = ' ';
+        Map<Character, Integer> frequencyMap = new HashMap<>();
+//        Arrays.asList(rucksackGroup.getRucksackByIndex(0).toString().toCharArray());
+        Objects.requireNonNull(rucksackGroup);
+        char[] rucksack0 = rucksackGroup.getRucksackByIndex(0).toString().toCharArray();
+        char[] rucksack1 = rucksackGroup.getRucksackByIndex(1).toString().toCharArray();
+        char[] rucksack2 = rucksackGroup.getRucksackByIndex(2).toString().toCharArray();
+//        for(char c : rucksack0 ) {
+//            if(frequencyMap.containsKey(c)) {
+//                frequencyMap.put(c, (frequencyMap.get(c) + 1)); // Increment by +1
+//            } else {
+//                frequencyMap.put(c, 1); // First time
+//            }
+//        }
+
+        frequencyMap.toString();
+        return result;
     }
 }

@@ -1,10 +1,12 @@
 package se.osbe.aoc;
 
 import se.osbe.aoc.helper.Rucksack;
+import se.osbe.aoc.helper.RucksackGroup;
 import se.osbe.aoc.helper.SantasLittleHelper;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static se.osbe.aoc.helper.SantasLittleHelper.loadFileToListOfStrings;
 import static se.osbe.aoc.helper.SantasLittleHelper.printResult;
@@ -38,7 +40,13 @@ public class AOC_DAY_03 implements IAoCTask {
 
     @Override
     public void resolveTask2() throws Exception {
-        Object result = null;
+        List<Rucksack> rucksacks = _inputList.stream().map(Rucksack::new).collect(Collectors.toList());
+        List<Integer> prioList = IntStream.range(0, rucksacks.size())
+                .mapToObj(i -> new RucksackGroup(rucksacks.get(0 + i*3), rucksacks.get(1 + i*3), rucksacks.get(2 + i*3)))
+                .map(SantasLittleHelper::resolveGroupBadge)
+                .map(SantasLittleHelper::resolveItemPriority)
+                .collect(Collectors.toList());
+        int result = prioList.stream().collect(Collectors.summingInt(Integer::intValue));
         printResult("03", "2", "" + result); // Correct result is nnn
     }
 }
