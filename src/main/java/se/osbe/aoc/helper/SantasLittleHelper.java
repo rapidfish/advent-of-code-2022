@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static java.util.Objects.requireNonNull;
 
@@ -125,7 +128,7 @@ public class SantasLittleHelper {
         throw new RuntimeException("Invalid input for winner( leftPlayer, rightPlayer ) : " + opponent + ", " + player);
     }
 
-    public static int resolvePriority(char c) {
+    public static int resolveItemPriority(char c) {
         /* priority:
          * Lowercase item types a through z have priorities 1 through 26.
          * Uppercase item types A through Z have priorities 27 through 52.
@@ -136,10 +139,24 @@ public class SantasLittleHelper {
             // A-Z
             return (c - 65) + 27;
         }
-        if(c > (65+25) && c <= 97) {
+        if(c > (65+25)) {
             // a-z
             return (c - 97) + 1;
         }
         throw new RuntimeException("Priority error!");
+    }
+
+
+    public static Character resolveDuplicateItem(Rucksack rucksack) {
+        char[] left = rucksack.getLeftCompartment().toCharArray();
+        List<Character> rightCompartmentList = rucksack.getRightCompartment().chars().mapToObj(c -> (char) c).collect(Collectors.toList());
+       OptionalInt optInt = IntStream.range(0, left.length).map(i -> {
+            if(rightCompartmentList.contains(left[i])) {
+                return i;
+            } else {
+                return -1;
+            }
+        }).filter(i -> i != -1).findFirst();
+        return new Character(left[optInt.orElseThrow(RuntimeException::new)]);
     }
 }

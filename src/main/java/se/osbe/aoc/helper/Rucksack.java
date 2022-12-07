@@ -17,17 +17,17 @@ public class Rucksack {
         rightCompartment = str.substring(offset).toCharArray();
     }
 
-    public String getLeftCompartmentSorted() {
-        char[] temp = new String(leftCompartment).toCharArray(); // deep copy char array!
-        Arrays.sort(temp);
-        return new String(temp);
-    }
-
-    public String getRightCompartmentSorted() {
-        char[] temp = new String(rightCompartment).toCharArray(); // deep copy char array!
-        Arrays.sort(temp);
-        return new String(temp);
-    }
+//    public String getLeftCompartmentSorted() {
+//        char[] temp = new String(leftCompartment).toCharArray(); // deep copy char array!
+//        Arrays.sort(temp);
+//        return new String(temp);
+//    }
+//
+//    public String getRightCompartmentSorted() {
+//        char[] temp = new String(rightCompartment).toCharArray(); // deep copy char array!
+//        Arrays.sort(temp);
+//        return new String(temp);
+//    }
 
     public String getLeftCompartment() {
         return new String(leftCompartment);

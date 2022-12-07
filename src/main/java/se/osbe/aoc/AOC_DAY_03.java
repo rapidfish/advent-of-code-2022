@@ -1,11 +1,13 @@
 package se.osbe.aoc;
 
 import se.osbe.aoc.helper.Rucksack;
+import se.osbe.aoc.helper.SantasLittleHelper;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static se.osbe.aoc.helper.SantasLittleHelper.*;
+import static se.osbe.aoc.helper.SantasLittleHelper.loadFileToListOfStrings;
+import static se.osbe.aoc.helper.SantasLittleHelper.printResult;
 
 public class AOC_DAY_03 implements IAoCTask {
 
@@ -25,17 +27,18 @@ public class AOC_DAY_03 implements IAoCTask {
 
     @Override
     public void resolveTask1() throws Exception {
-        List rucksacks = _inputList.stream().map(Rucksack::new).collect(Collectors.toList());
-        System.out.println(rucksacks);
-        System.out.println(resolvePriority('A'));
-
-        //SortedSet<String> leftCompartment = ;
-        // printResult("03", "1", "" + result); // Correct result is 14375
+        List<Rucksack> rucksacks = _inputList.stream().map(Rucksack::new).collect(Collectors.toList());
+        List<Integer> prioList = rucksacks.stream()
+                .map(SantasLittleHelper::resolveDuplicateItem)
+                .map(SantasLittleHelper::resolveItemPriority)
+                .collect(Collectors.toList());
+        int result = prioList.stream().collect(Collectors.summingInt(Integer::intValue));
+        printResult("03", "1", "" + result); // Correct result is 8493
     }
 
     @Override
     public void resolveTask2() throws Exception {
         Object result = null;
-        printResult("03", "2", "" + result); // Correct result is 10274
+        printResult("03", "2", "" + result); // Correct result is nnn
     }
 }

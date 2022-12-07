@@ -24,12 +24,12 @@
 //    @Override
 //    public void resolveTask1() throws Exception {
 //        Object result = null;
-//        printResult("03", "1", "" + result); // Correct result is 14375
+//        printResult("03", "1", "" + result); // Correct result is nnn
 //    }
 //
 //    @Override
 //    public void resolveTask2() throws Exception {
 //        Object result = null;
-//        printResult("03", "2", "" + result); // Correct result is 10274
+//        printResult("03", "2", "" + result); // Correct result is nnn
 //    }
 //}
