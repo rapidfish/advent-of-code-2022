@@ -15,7 +15,7 @@ import static java.util.Objects.requireNonNull;
 public class SantasLittleHelper {
 
     private static final String EMPTY_ROW = "";
-    private static final Pattern ROCK_PAPER_SCISSORS_PATTERN = Pattern.compile("[ABC][ ][XYZ]");
+
 
     public static Map<Integer, List<Integer>> loadFileToMapWithLists(String fileName) throws Exception {
         Integer index = 0;
@@ -67,13 +67,7 @@ public class SantasLittleHelper {
         System.out.println(String.format("AoC2022 - DAY-%s - TASK-%s: %s", dayNo, taskNo, result));
     }
 
-    public static RPC convertRawHandToRPC(String rawHands) {
-        String hands = Objects.requireNonNull(rawHands);
-        if (!ROCK_PAPER_SCISSORS_PATTERN.matcher(rawHands).find()) {
-            throw new RuntimeException("Wrong pattern for row with 'Rock Paper Scissor' hand: " + rawHands);
-        }
-        return new RPC(hands.charAt(0), hands.charAt(2));
-    }
+
 
     /**
      * Determine winning hand, opponent wins (-1), player wins (1), or if its a draw (0)
@@ -125,57 +119,5 @@ public class SantasLittleHelper {
                 }
         }
         throw new RuntimeException("Invalid input for winner( leftPlayer, rightPlayer ) : " + opponent + ", " + player);
-    }
-
-    public static int resolveItemPriority(char c) {
-        /* priority:
-         * Lowercase item types a through z have priorities 1 through 26.
-         * Uppercase item types A through Z have priorities 27 through 52.
-         */
-        // 65=A
-        // 97=a
-        if (c >= 65 && c < (65 + 26)) {
-            // A-Z
-            return (c - 65) + 27;
-        }
-        if (c > (65 + 25)) {
-            // a-z
-            return (c - 97) + 1;
-        }
-        throw new RuntimeException("Priority error!");
-    }
-
-
-    public static Character resolveDuplicateItem(Rucksack rucksack) {
-        char[] left = rucksack.getLeftCompartment().toCharArray();
-        List<Character> rightCompartmentList = rucksack.getRightCompartment().chars().mapToObj(c -> (char) c).collect(Collectors.toList());
-        OptionalInt optInt = IntStream.range(0, left.length).map(i -> {
-            if (rightCompartmentList.contains(left[i])) {
-                return i;
-            } else {
-                return -1;
-            }
-        }).filter(i -> i != -1).findFirst();
-        return new Character(left[optInt.orElseThrow(RuntimeException::new)]);
-    }
-
-    public static Character resolveGroupBadge(RucksackGroup rucksackGroup) {
-        char result = ' ';
-        Map<Character, Integer> frequencyMap = new HashMap<>();
-//        Arrays.asList(rucksackGroup.getRucksackByIndex(0).toString().toCharArray());
-        Objects.requireNonNull(rucksackGroup);
-        char[] rucksack0 = rucksackGroup.getRucksackByIndex(0).toString().toCharArray();
-        char[] rucksack1 = rucksackGroup.getRucksackByIndex(1).toString().toCharArray();
-        char[] rucksack2 = rucksackGroup.getRucksackByIndex(2).toString().toCharArray();
-//        for(char c : rucksack0 ) {
-//            if(frequencyMap.containsKey(c)) {
-//                frequencyMap.put(c, (frequencyMap.get(c) + 1)); // Increment by +1
-//            } else {
-//                frequencyMap.put(c, 1); // First time
-//            }
-//        }
-
-        frequencyMap.toString();
-        return result;
     }
 }

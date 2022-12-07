@@ -17,8 +17,8 @@ public class AOC_DAY_01 implements IAoCTask {
     public AOC_DAY_01() throws Exception {
         _inputMap = loadFileToMapWithLists(INPUTFILE1);
         _result = new ArrayList<>();
-        resolveTask1();
-        resolveTask2();
+        resolveTask1(); // correct answer is 69206
+        resolveTask2(); // correct answer is 197400
     }
 
     public void resolveTask1() throws Exception {
@@ -32,7 +32,7 @@ public class AOC_DAY_01 implements IAoCTask {
                 .filter(Objects::nonNull)
                 .max(Integer::compare)
                 .orElse(-1));
-        printResult("01", "1", _result.get(indxToMaxValue)); // correct answer is 69206
+        printResult("01", "1", _result.get(indxToMaxValue));
     }
 
     public void resolveTask2() throws Exception {
@@ -40,7 +40,7 @@ public class AOC_DAY_01 implements IAoCTask {
         int sum = IntStream.rangeClosed(0, 2)
                 .map(idx -> _result.get(idx))
                 .sum();
-        printResult("01", "2", sum); // correct answer is 197400
+        printResult("01", "2", sum);
     }
 
     public static void main(String[] args) throws Exception {

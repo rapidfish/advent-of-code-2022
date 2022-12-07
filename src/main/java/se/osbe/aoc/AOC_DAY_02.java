@@ -4,6 +4,8 @@ import se.osbe.aoc.helper.RPC;
 import se.osbe.aoc.helper.SantasLittleHelper;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.regex.Pattern;
 
 import static se.osbe.aoc.helper.SantasLittleHelper.*;
 
@@ -11,12 +13,13 @@ public class AOC_DAY_02 implements IAoCTask {
 
     private static final String INPUTFILE1 = "input_d02_t01.txt";
 
-    private List<String> _inputList;
+    private final List<String> _inputList;
+    private static final Pattern ROCK_PAPER_SCISSORS_PATTERN = Pattern.compile("[ABC][ ][XYZ]");
 
     public AOC_DAY_02() throws Exception {
         _inputList = loadFileToListOfStrings(INPUTFILE1);
-        resolveTask1();
-        resolveTask2();
+        resolveTask1(); // Correct result is 14375
+        resolveTask2(); // Correct result is 10274
     }
 
     public static void main(String[] args) throws Exception {
@@ -25,22 +28,21 @@ public class AOC_DAY_02 implements IAoCTask {
 
     @Override
     public void resolveTask1() throws Exception {
-
         int result = _inputList.stream()
-                .map(SantasLittleHelper::convertRawHandToRPC)
+                .map(AOC_DAY_02::convertRawHandToRPC)
                 .mapToInt(AOC_DAY_02::calculateScoreWinLose)
                 .sum();
-        printResult("02", "1", "" + result); // Correct result is 14375
+        printResult("02", "1", "" + result);
     }
 
     @Override
     public void resolveTask2() throws Exception {
         int result = _inputList.stream()
-                .map(SantasLittleHelper::convertRawHandToRPC)
+                .map(AOC_DAY_02::convertRawHandToRPC)
                 .map(AOC_DAY_02::resolveStrategyGuide)
                 .mapToInt(AOC_DAY_02::calculateScoreWinLose)
                 .sum();
-        printResult("02", "2", "" + result); // Correct result is 10274
+        printResult("02", "2", "" + result);
     }
 
     private static RPC resolveStrategyGuide(RPC hand) {
@@ -103,5 +105,13 @@ public class AOC_DAY_02 implements IAoCTask {
             return 3 + (compareHands(hand) > 0 ? 6 : (compareHands(hand) == 0 ? 3 : 0));
         }
         throw new RuntimeException("Crazy error");
+    }
+
+    private static RPC convertRawHandToRPC(String rawHands) {
+        String hands = Objects.requireNonNull(rawHands);
+        if (!ROCK_PAPER_SCISSORS_PATTERN.matcher(rawHands).find()) {
+            throw new RuntimeException("Wrong pattern for row with 'Rock Paper Scissor' hand: " + rawHands);
+        }
+        return new RPC(hands.charAt(0), hands.charAt(2));
     }
 }
