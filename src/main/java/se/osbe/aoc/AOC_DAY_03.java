@@ -1,16 +1,13 @@
 package se.osbe.aoc;
 
-import se.osbe.aoc.helper.SantasLittleHelper;
+import se.osbe.aoc.helper.Rucksack;
 
-import java.nio.charset.Charset;
 import java.util.List;
-import java.util.Map;
-import java.util.SortedSet;
-import java.util.concurrent.ConcurrentSkipListSet;
+import java.util.stream.Collectors;
 
 import static se.osbe.aoc.helper.SantasLittleHelper.*;
 
-public class AOC_DAY_03 implements IResolveTasks {
+public class AOC_DAY_03 implements IAoCTask {
 
     private static final String INPUTFILE1 = "input_d03_t01.txt";
 
@@ -28,23 +25,17 @@ public class AOC_DAY_03 implements IResolveTasks {
 
     @Override
     public void resolveTask1() throws Exception {
-        Object result = null;
-        _inputList.stream().forEach(r -> System.out.println(AOC_DAY_03.getLeftCompartment(r)));
-        SortedSet<String> leftCompartment = ;
-        printResult("03", "1", "" + result); // Correct result is 14375
+        List rucksacks = _inputList.stream().map(Rucksack::new).collect(Collectors.toList());
+        System.out.println(rucksacks);
+        System.out.println(resolvePriority('A'));
+
+        //SortedSet<String> leftCompartment = ;
+        // printResult("03", "1", "" + result); // Correct result is 14375
     }
 
     @Override
     public void resolveTask2() throws Exception {
         Object result = null;
         printResult("03", "2", "" + result); // Correct result is 10274
-    }
-
-    private static String getLeftCompartment(String rucksack) {
-        return rucksack.substring(0, rucksack.length() / 2);
-    }
-
-    private static String getRightCompartment(String rucksack) {
-        return rucksack.substring(rucksack.length() / 2);
     }
 }

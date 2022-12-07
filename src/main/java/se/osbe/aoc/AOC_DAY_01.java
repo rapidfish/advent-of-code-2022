@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 import static se.osbe.aoc.helper.SantasLittleHelper.loadFileToMapWithLists;
 import static se.osbe.aoc.helper.SantasLittleHelper.printResult;
 
-public class AOC_DAY_01 implements IResolveTasks {
+public class AOC_DAY_01 implements IAoCTask {
 
     private static String INPUTFILE1 = "input_d01_t01.txt";
 

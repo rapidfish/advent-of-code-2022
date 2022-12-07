@@ -1,7 +1,5 @@
 package se.osbe.aoc.helper;
 
-import se.osbe.aoc.RPC;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
@@ -67,7 +65,7 @@ public class SantasLittleHelper {
         System.out.println(String.format("AoC2022 - DAY-%s - TASK-%s: %s", dayNo, taskNo, result));
     }
 
-    public static RPC convertRawHandToRPC(String rawHands){
+    public static RPC convertRawHandToRPC(String rawHands) {
         String hands = Objects.requireNonNull(rawHands);
         if (!ROCK_PAPER_SCISSORS_PATTERN.matcher(rawHands).find()) {
             throw new RuntimeException("Wrong pattern for row with 'Rock Paper Scissor' hand: " + rawHands);
@@ -77,6 +75,7 @@ public class SantasLittleHelper {
 
     /**
      * Determine winning hand, opponent wins (-1), player wins (1), or if its a draw (0)
+     *
      * @param rpc a Rock Paper Scissors object
      * @return greater than zero player wins, less than zero opponent wins, zero its a draw!
      */
@@ -86,7 +85,7 @@ public class SantasLittleHelper {
 
     /**
      * @param opponent opponent hand ('A' for Rock, 'B' for Paper, and 'C' for Scissors)
-     * @param player player hand ('X' for Rock, 'Y' for Paper, and 'Z' for Scissors)
+     * @param player   player hand ('X' for Rock, 'Y' for Paper, and 'Z' for Scissors)
      * @return greater than zero player wins, less than zero opponent wins, zero its a draw!
      */
     private static int compareHands(char opponent, char player) {
@@ -126,8 +125,21 @@ public class SantasLittleHelper {
         throw new RuntimeException("Invalid input for winner( leftPlayer, rightPlayer ) : " + opponent + ", " + player);
     }
 
-    public List<String> splitSpace(String str) {
-        final String SPACE = " ";
-        return Arrays.asList(str.split(SPACE));
+    public static int resolvePriority(char c) {
+        /* priority:
+         * Lowercase item types a through z have priorities 1 through 26.
+         * Uppercase item types A through Z have priorities 27 through 52.
+         */
+        // 65=A
+        // 97=a
+        if(c >= 65 && c < (65+26)) {
+            // A-Z
+            return (c - 65) + 27;
+        }
+        if(c > (65+25) && c <= 97) {
+            // a-z
+            return (c - 97) + 1;
+        }
+        throw new RuntimeException("Priority error!");
     }
 }

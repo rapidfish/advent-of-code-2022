@@ -1,13 +1,13 @@
 package se.osbe.aoc;
 
+import se.osbe.aoc.helper.RPC;
 import se.osbe.aoc.helper.SantasLittleHelper;
 
 import java.util.List;
-import java.util.Map;
 
 import static se.osbe.aoc.helper.SantasLittleHelper.*;
 
-public class AOC_DAY_02 implements IResolveTasks {
+public class AOC_DAY_02 implements IAoCTask {
 
     private static final String INPUTFILE1 = "input_d02_t01.txt";
 
