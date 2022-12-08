@@ -1,10 +1,14 @@
 package se.osbe.aoc.helper;
 
+import se.osbe.aoc.IAoCTask;
 import se.osbe.aoc.data.RPC;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static java.util.Objects.requireNonNull;
 
@@ -14,7 +18,6 @@ import static java.util.Objects.requireNonNull;
 public class SantasLittleHelper {
 
     private static final String EMPTY_ROW = "";
-
 
     public static Map<Integer, List<Integer>> loadFileToMapWithLists(String fileName) throws Exception {
         Integer index = 0;
@@ -58,15 +61,20 @@ public class SantasLittleHelper {
         return reader;
     }
 
-    public static void printResult(String dayNo, String taskNo, Integer result) {
-        printResult(dayNo, taskNo, String.valueOf(result));
+    public static void printResult(IAoCTask day, String taskNo, int result) {
+        printResult(day, taskNo, "" + result);
     }
 
-    public static void printResult(String dayNo, String taskNo, String result) {
-        System.out.println(String.format("AoC2022 - DAY-%s - TASK-%s: %s", dayNo, taskNo, result));
+    public static void printResult(IAoCTask day, String taskNo, String result) {
+        final int OFFSET = 2; // step back 2 chars to get day number from class name (reflections)
+        int index = day.getClass().getCanonicalName().length() - OFFSET;
+        String dayStr = day.getClass().getCanonicalName().substring(index);
+        printResult(dayStr, taskNo, result);
     }
 
-
+    public static void printResult(String day, String taskNo, String result) {
+        System.out.println(String.format("AoC2022 - DAY-%s - TASK-%s: %s", "" + day, taskNo, "" + result));
+    }
 
     /**
      * Determine winning hand, opponent wins (-1), player wins (1), or if its a draw (0)

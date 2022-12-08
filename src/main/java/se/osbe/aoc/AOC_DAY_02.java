@@ -31,7 +31,7 @@ public class AOC_DAY_02 implements IAoCTask {
                 .map(AOC_DAY_02::convertRawHandToRPC)
                 .mapToInt(AOC_DAY_02::calculateScoreWinLose)
                 .sum();
-        printResult("02", "1", "" + result);
+        printResult(this, "1", "" + result);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class AOC_DAY_02 implements IAoCTask {
                 .map(AOC_DAY_02::resolveStrategyGuide)
                 .mapToInt(AOC_DAY_02::calculateScoreWinLose)
                 .sum();
-        printResult("02", "2", "" + result);
+        printResult(this, "2", "" + result);
     }
 
     private static RPC resolveStrategyGuide(RPC hand) {

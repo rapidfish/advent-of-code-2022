@@ -32,7 +32,7 @@ public class AOC_DAY_04 implements IAoCTask {
                 .filter(AOC_DAY_04::isCompleteOverlappingRange)
                 .collect(Collectors.toList());
         int result = resultList.size();
-        printResult("04", "1", "" + result);
+        printResult(this, "1", "" + result);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class AOC_DAY_04 implements IAoCTask {
                 .filter(AOC_DAY_04::isPartlyOverlappingRange)
                 .collect(Collectors.toList());
         int result = resultList.size();
-        printResult("04", "2", "" + result);
+        printResult(this, "2", "" + result);
     }
 
     private static boolean isCompleteOverlappingRange(ElvesPair pair) {

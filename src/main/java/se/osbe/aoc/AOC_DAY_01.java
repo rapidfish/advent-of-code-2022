@@ -32,15 +32,15 @@ public class AOC_DAY_01 implements IAoCTask {
                 .filter(Objects::nonNull)
                 .max(Integer::compare)
                 .orElse(-1));
-        printResult("01", "1", _result.get(indxToMaxValue));
+        printResult(this, "1", _result.get(indxToMaxValue));
     }
 
     public void resolveTask2() throws Exception {
         Collections.sort(_result, Comparator.reverseOrder());
-        int sum = IntStream.rangeClosed(0, 2)
+        int result = IntStream.rangeClosed(0, 2)
                 .map(idx -> _result.get(idx))
                 .sum();
-        printResult("01", "2", sum);
+        printResult(this, "2", result);
     }
 
     public static void main(String[] args) throws Exception {

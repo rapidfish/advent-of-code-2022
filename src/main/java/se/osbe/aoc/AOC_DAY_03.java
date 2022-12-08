@@ -36,7 +36,7 @@ public class AOC_DAY_03 implements IAoCTask {
                 .map(AOC_DAY_03::resolveItemPriority)
                 .collect(Collectors.toList());
         int result = prioList.stream().collect(Collectors.summingInt(Integer::intValue));
-        printResult("03", "1", "" + result);
+        printResult(this, "1", "" + result);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class AOC_DAY_03 implements IAoCTask {
                 .map(AOC_DAY_03::resolveItemPriority)
                 .collect(Collectors.toList());
         int result = prioList.stream().collect(Collectors.summingInt(Integer::intValue));
-        printResult("03", "2", "" + result);
+        printResult(this, "2", "" + result);
     }
 
     private static Character resolveDuplicateItem(Rucksack rucksack) {
