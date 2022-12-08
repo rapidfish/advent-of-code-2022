@@ -1,4 +1,4 @@
-package se.osbe.aoc.helper;
+package se.osbe.aoc.data;
 
 public class ElvesPair {
     private final int sectionsRange1Low;

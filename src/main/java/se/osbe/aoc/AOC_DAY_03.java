@@ -1,12 +1,11 @@
 package se.osbe.aoc;
 
-import se.osbe.aoc.helper.Rucksack;
-import se.osbe.aoc.helper.RucksackGroup;
+import se.osbe.aoc.data.Rucksack;
+import se.osbe.aoc.data.RucksackGroup;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.OptionalInt;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 

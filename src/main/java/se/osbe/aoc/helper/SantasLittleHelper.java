@@ -1,11 +1,10 @@
 package se.osbe.aoc.helper;
 
+import se.osbe.aoc.data.RPC;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static java.util.Objects.requireNonNull;
 

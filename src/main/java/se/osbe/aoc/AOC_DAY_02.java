@@ -1,7 +1,6 @@
 package se.osbe.aoc;
 
-import se.osbe.aoc.helper.RPC;
-import se.osbe.aoc.helper.SantasLittleHelper;
+import se.osbe.aoc.data.RPC;
 
 import java.util.List;
 import java.util.Objects;

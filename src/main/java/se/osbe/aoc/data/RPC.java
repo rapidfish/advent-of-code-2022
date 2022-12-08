@@ -1,4 +1,4 @@
-package se.osbe.aoc.helper;
+package se.osbe.aoc.data;
 
 /**
  * Opponent hand ('A' for Rock, 'B' for Paper, and 'C' for Scissors)

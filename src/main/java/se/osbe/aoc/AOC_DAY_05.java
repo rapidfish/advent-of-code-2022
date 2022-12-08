@@ -32,4 +32,6 @@ public class AOC_DAY_05 implements IAoCTask {
         Object result = null;
         printResult("05", "2", "" + result);
     }
+
+
 }

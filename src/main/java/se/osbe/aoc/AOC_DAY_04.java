@@ -1,6 +1,6 @@
 package se.osbe.aoc;
 
-import se.osbe.aoc.helper.ElvesPair;
+import se.osbe.aoc.data.ElvesPair;
 
 import java.util.List;
 import java.util.stream.Collectors;

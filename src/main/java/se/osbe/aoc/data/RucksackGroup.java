@@ -1,4 +1,4 @@
-package se.osbe.aoc.helper;
+package se.osbe.aoc.data;
 
 import java.util.Arrays;
 import java.util.List;
