@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static java.util.Objects.requireNonNull;
 
@@ -127,4 +129,10 @@ public class SantasLittleHelper {
         }
         throw new RuntimeException("Invalid input for winner( leftPlayer, rightPlayer ) : " + opponent + ", " + player);
     }
+
+    public static boolean isOnlyDigits(String str){
+        final String ONLY_DIGITS_AND_SPACES = "[ 0-9]+";
+        final Pattern p = Pattern.compile(ONLY_DIGITS_AND_SPACES);
+        return p.matcher(str).matches();
+    };
 }
