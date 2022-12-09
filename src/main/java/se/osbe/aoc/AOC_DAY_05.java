@@ -26,8 +26,8 @@ public class AOC_DAY_05 implements IAoCTask {
         _inputList = loadFileToListOfStrings(INPUTFILE1);
         // Find cutpoint row index to the row with column labels between crater chart diagram and rearrangement procedure list (for the giant crane operator)
         _cutPointIndex = IntStream.range(0, _inputList.size()).filter(i -> SantasLittleHelper.isOnlyDigits(_inputList.get(i))).findFirst().orElseThrow(RuntimeException::new);
-        resolveTask1(); // Correct result is nnn
-        resolveTask2(); // Correct result is nnn
+        resolveTask1(); // Correct result is FCVRLMVQP
+        resolveTask2(); // Correct result is RWLWGJGFD
     }
 
     public static void main(String[] args) throws Exception {
