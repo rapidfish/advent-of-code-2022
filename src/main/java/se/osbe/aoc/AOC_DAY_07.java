@@ -1,6 +1,8 @@
 package se.osbe.aoc;
 
 import java.util.List;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static se.osbe.aoc.helper.SantasLittleHelper.loadFileToListOfStrings;
 import static se.osbe.aoc.helper.SantasLittleHelper.printResult;
@@ -23,7 +25,16 @@ public class AOC_DAY_07 implements IAoCTask {
 
     @Override
     public void resolveTask1() throws Exception {
-        Object result = null;
+        // TODO:
+        final Pattern p = Pattern.compile("\\d+");
+        Integer result = null;
+        Integer totalSizeOfEveryFile = // 42143088
+                _inputList.stream()
+                .filter(row -> p.matcher(row).find())
+                .map(row -> row.replaceAll("\\D+", ""))
+                .map(Integer::parseInt)
+                .collect(Collectors.summingInt(Integer::intValue));
+
         printResult(this, "1", "" + result);
     }
 
