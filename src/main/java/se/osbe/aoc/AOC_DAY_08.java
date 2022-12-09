@@ -7,7 +7,7 @@ import static se.osbe.aoc.helper.SantasLittleHelper.printResult;
 
 public class AOC_DAY_08 implements IAoCTask {
 
-    private static final String INPUTFILE1 = "input_d05_t01.txt";
+    private static final String INPUTFILE1 = "input_d08_t01.txt";
 
     private List<String> _inputList;
 

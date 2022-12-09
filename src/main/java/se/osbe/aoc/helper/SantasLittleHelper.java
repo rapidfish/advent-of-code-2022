@@ -5,10 +5,7 @@ import se.osbe.aoc.data.RPC;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -55,6 +52,10 @@ public class SantasLittleHelper {
     }
 
     private static BufferedReader readFileByFilename(String fileName) {
+        Objects.requireNonNull(fileName);
+        if("".equals(fileName)) {
+            throw new RuntimeException("File name is empty!");
+        }
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(
                         requireNonNull(SantasLittleHelper.class.getClassLoader().getResourceAsStream(fileName))

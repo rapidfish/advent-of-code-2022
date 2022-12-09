@@ -7,7 +7,7 @@
 //
 //public class AOC_DAY_TEMPLATE implements IAoCTask {
 //
-//    private static final String INPUTFILE1 = "input_d03_t01.txt";
+//    private static final String INPUTFILE1 = ""; // pattern for file name is "input_d01_t01.txt" <- where 'd' = day, 't' = task
 //
 //    private List<String> _inputList;
 //
